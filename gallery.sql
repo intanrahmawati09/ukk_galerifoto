@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 29, 2024 at 08:14 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Waktu pembuatan: 02 Mar 2024 pada 13.04
+-- Versi server: 10.4.18-MariaDB
+-- Versi PHP: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `album`
+-- Struktur dari tabel `album`
 --
 
 CREATE TABLE `album` (
@@ -33,22 +33,23 @@ CREATE TABLE `album` (
   `deskripsi` text NOT NULL,
   `tanggaldibuat` date NOT NULL,
   `userid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `album`
+-- Dumping data untuk tabel `album`
 --
 
 INSERT INTO `album` (`albumid`, `namaalbum`, `deskripsi`, `tanggaldibuat`, `userid`) VALUES
 (16, 'Gunung', 'Gunung adalah suatu bentuk permukaan tanah yang letaknya jauh lebih tinggi daripada tanah-tanah di daerah sekitarnya', '2024-02-29', 8),
 (17, 'Ranu', 'Ranu merupakan salah satu jenis danau yang terbentuk khusus oleh letusan gunungapi secara freatomagmatik. danau merupakan tubuh perairan yang menempati suatu cekungan dan dikelilingi oleh daratan.', '2024-02-29', 8),
 (18, 'Air Terjun', 'Air terjun adalah formasi geologi dari arus air yang mengalir melalui suatu formasi bebatuan yang mengalami erosi dan jatuh ke bawah dari ketinggian. Air terjun dapat berupa buatan yang biasa digunakan di taman. ', '2024-02-29', 8),
-(19, 'Pantai', 'Pantai adalah sebuah bentuk geografis yang terdiri dari pasir, dan terdapat di daerah pesisir laut. Daerah pantai menjadi batas antara daratan dan perairan laut. Kawasan pantai berbeda dengan pesisir walaupun antara keduanya saling berkaitan. ', '2024-02-29', 8);
+(19, 'Pantai', 'Pantai adalah sebuah bentuk geografis yang terdiri dari pasir, dan terdapat di daerah pesisir laut. Daerah pantai menjadi batas antara daratan dan perairan laut. Kawasan pantai berbeda dengan pesisir walaupun antara keduanya saling berkaitan. ', '2024-02-29', 8),
+(20, 'Makanan', 'Aneka makanan', '2024-03-02', 8);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `foto`
+-- Struktur dari tabel `foto`
 --
 
 CREATE TABLE `foto` (
@@ -59,10 +60,10 @@ CREATE TABLE `foto` (
   `lokasifile` varchar(255) NOT NULL,
   `albumid` int(11) NOT NULL,
   `userid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `foto`
+-- Dumping data untuk tabel `foto`
 --
 
 INSERT INTO `foto` (`fotoid`, `judulfoto`, `deskripsifoto`, `tanggalunggah`, `lokasifile`, `albumid`, `userid`) VALUES
@@ -86,7 +87,7 @@ INSERT INTO `foto` (`fotoid`, `judulfoto`, `deskripsifoto`, `tanggalunggah`, `lo
 -- --------------------------------------------------------
 
 --
--- Table structure for table `komentarfoto`
+-- Struktur dari tabel `komentarfoto`
 --
 
 CREATE TABLE `komentarfoto` (
@@ -95,21 +96,22 @@ CREATE TABLE `komentarfoto` (
   `userid` int(11) NOT NULL,
   `isikomentar` text NOT NULL,
   `tanggalkomentar` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `komentarfoto`
+-- Dumping data untuk tabel `komentarfoto`
 --
 
 INSERT INTO `komentarfoto` (`komentarid`, `fotoid`, `userid`, `isikomentar`, `tanggalkomentar`) VALUES
 (9, 20, 8, 'halo', '2024-02-29'),
 (10, 24, 8, 'itu terletak dimana?', '2024-02-29'),
-(11, 23, 8, 'wow', '2024-02-29');
+(11, 23, 8, 'wow', '2024-02-29'),
+(12, 20, 8, 'oke', '2024-03-02');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `likefoto`
+-- Struktur dari tabel `likefoto`
 --
 
 CREATE TABLE `likefoto` (
@@ -117,10 +119,10 @@ CREATE TABLE `likefoto` (
   `fotoid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `tanggallike` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `likefoto`
+-- Dumping data untuk tabel `likefoto`
 --
 
 INSERT INTO `likefoto` (`likeid`, `fotoid`, `userid`, `tanggallike`) VALUES
@@ -134,7 +136,7 @@ INSERT INTO `likefoto` (`likeid`, `fotoid`, `userid`, `tanggallike`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -144,28 +146,28 @@ CREATE TABLE `user` (
   `email` varchar(255) NOT NULL,
   `namalengkap` varchar(255) NOT NULL,
   `alamat` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`userid`, `username`, `password`, `email`, `namalengkap`, `alamat`) VALUES
-(8, 'dinda', 'ea5a486c712a91e48443cd802642223d', 'dinda@gmail.com', 'dindamega', 'jember');
+(8, 'dinda', '827ccb0eea8a706c4c34a16891f84e7b', 'dinda@gmail.com', 'dindamega123', 'jember');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `album`
+-- Indeks untuk tabel `album`
 --
 ALTER TABLE `album`
   ADD PRIMARY KEY (`albumid`),
   ADD KEY `userid` (`userid`);
 
 --
--- Indexes for table `foto`
+-- Indeks untuk tabel `foto`
 --
 ALTER TABLE `foto`
   ADD PRIMARY KEY (`fotoid`),
@@ -173,7 +175,7 @@ ALTER TABLE `foto`
   ADD KEY `userid` (`userid`);
 
 --
--- Indexes for table `komentarfoto`
+-- Indeks untuk tabel `komentarfoto`
 --
 ALTER TABLE `komentarfoto`
   ADD PRIMARY KEY (`komentarid`),
@@ -181,7 +183,7 @@ ALTER TABLE `komentarfoto`
   ADD KEY `userid` (`userid`);
 
 --
--- Indexes for table `likefoto`
+-- Indeks untuk tabel `likefoto`
 --
 ALTER TABLE `likefoto`
   ADD PRIMARY KEY (`likeid`),
@@ -189,71 +191,71 @@ ALTER TABLE `likefoto`
   ADD KEY `userid` (`userid`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`userid`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `album`
+-- AUTO_INCREMENT untuk tabel `album`
 --
 ALTER TABLE `album`
-  MODIFY `albumid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `albumid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `foto`
+-- AUTO_INCREMENT untuk tabel `foto`
 --
 ALTER TABLE `foto`
-  MODIFY `fotoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `fotoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
--- AUTO_INCREMENT for table `komentarfoto`
+-- AUTO_INCREMENT untuk tabel `komentarfoto`
 --
 ALTER TABLE `komentarfoto`
-  MODIFY `komentarid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `komentarid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `likefoto`
+-- AUTO_INCREMENT untuk tabel `likefoto`
 --
 ALTER TABLE `likefoto`
   MODIFY `likeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `album`
+-- Ketidakleluasaan untuk tabel `album`
 --
 ALTER TABLE `album`
   ADD CONSTRAINT `album_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `foto`
+-- Ketidakleluasaan untuk tabel `foto`
 --
 ALTER TABLE `foto`
   ADD CONSTRAINT `foto_ibfk_1` FOREIGN KEY (`albumid`) REFERENCES `album` (`albumid`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `foto_ibfk_2` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `komentarfoto`
+-- Ketidakleluasaan untuk tabel `komentarfoto`
 --
 ALTER TABLE `komentarfoto`
   ADD CONSTRAINT `komentarfoto_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `komentarfoto_ibfk_2` FOREIGN KEY (`fotoid`) REFERENCES `foto` (`fotoid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `likefoto`
+-- Ketidakleluasaan untuk tabel `likefoto`
 --
 ALTER TABLE `likefoto`
   ADD CONSTRAINT `likefoto_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
